@@ -1,6 +1,10 @@
 import React from 'react'
 import '../css/Notfound.css'
 
+//  ./ - Represents the first folder in src (url prompts the import function to go back a step backward)
+//  ../ - Represents the second folder in src (url prompts the import function to go back two steps backward)
+// ../../ - To import from the sokogarden
+
 const Notfound = () => {
 return (
     <div className='Notfound'>
@@ -12,3 +16,4 @@ return (
 }
 
 export default Notfound
+
