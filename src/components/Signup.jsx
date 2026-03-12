@@ -168,3 +168,30 @@ export default Signup;
             //     console.error(err);
             // }
             // };
+
+// Securing an API endpoint preventing unauthorized data entry
+
+    // Focus targets on:
+        // Authentication (who are you?)
+        // Authorization (what are you allowed to do?)
+        // Validation (is the data you're sending safe?)
+
+    // Verification (of the sender identity) ought to be done by the use of:
+        // OAuth2 / OpenID Connect = (The industry standard) Use Bearer tokens e.g JWT[JSON Web Token] to verify that the user has been authenticated by a trusted provider.
+                // JSON Web Token contains the Header,Payload and Signature
+        // API Keys = Useful for server-to-server communication, but less secure than tokens because they don't expire quickly. Always send these in the Request Header, never in the URL.
+        // Role-Based Access Control (RBAC) = Just because someone is "logged in" doesn't mean they should be able to POST data. Ensure the user has the specific "Write" or "Admin" permissions required for that endpoint.
+
+    // Validation (Client data ought not to be trusted since it may be coming from malicious users who would have bypassed your frontend forms and sent raw, dangerous data directly to your API).
+        // This can be controlled by the use of:
+            // Input Sanitization = Strip out HTML tags or script fragments to prevent Cross-Site Scripting (XSS).
+            // Schema Validation: Use a library (like Joi, Zod, or JSON Schema) to ensure the incoming data matches the exact format you expect. If a field should be an integer, reject it if it's a string.
+            // Parameterized Queries: If the API entry goes into a database, use parameterized queries to prevent SQL Injection.
+// Rate Limiting and Throttling
+    // Authorized users can also cause harm (or "Denial of Service") if they send too many requests.
+        // Rate Limiting: Restrict the number of requests a single IP or User ID can make within a timeframe (e.g., 100 requests per minute).
+        // Throttling: Gradually slow down the response time for users who are nearing their limit to discourage automated "brute-force" entry attempts.
+
+//Encryption and Transport Security
+        // HTTPS (TLS): This is non-negotiable. It encrypts the data in transit so that "Man-in-the-Middle" attackers cannot intercept or alter the data being sent to your endpoint.
+        // CORS (Cross-Origin Resource Sharing): Configure your server to only accept requests from specific, trusted domains. This prevents unauthorized websites from making API calls on behalf of your users.
