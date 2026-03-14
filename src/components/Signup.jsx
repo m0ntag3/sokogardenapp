@@ -36,6 +36,24 @@ const Signup = () => {
             // By use of Axois, we can access the method (POST)
             const response = await axios.post("https://collinspaul.alwaysdata.net/api/signup", formdata);
 
+            // --- MODIFIED AREA: SAVING TO LOCAL STORAGE ---
+            const userDetails = {
+                username: username,
+                email: email,
+                phone: number,
+                registrationDate: new Date().toISOString()
+            };
+            // Save the object as a JSON string
+            localStorage.setItem('registeredUser', JSON.stringify(userDetails));
+
+// Created a userDetails object: Instead of just sending data to the server, we bundle the local state variables into a clean object. (Note:  the password was excluded for security reasons).
+
+// JSON.stringify: We converted the object into a string because localStorage cannot store raw JavaScript objects.
+
+// localStorage.setItem: This saves the data under the key 'registeredUser'. You can retrieve this later on a "Profile" or "Dashboard" page using JSON.parse(localStorage.getItem('registeredUser')).
+
+// If you want to verify the data is actually there, open your browser's Developer Tools (F12), go to the Application tab, and click on Local Storage in the left sidebar.
+
             // Set back the loading to default
             setLoading("");
 
@@ -47,6 +65,7 @@ const Signup = () => {
             setEmail("");
             setPassword("");
             setNumber("");
+
             setTimeout(() => {
     setSuccess("");
 }, 5000);
@@ -58,8 +77,10 @@ const Signup = () => {
             // Update the error hook with the message given back from the response
             setError(error.message)
         }
-
     }
+
+    // Add this just before 'return' to see what's in storage every time the page renders
+// console.log("Current Storage:", JSON.parse(localStorage.getItem      ('registeredUser')));
 
 return (
     <div className='row justify-content-center mt-4'>

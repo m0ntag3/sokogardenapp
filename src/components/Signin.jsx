@@ -106,3 +106,13 @@ return (
 export default Signin;
 
 // Storing user details into the local storage
+    // It happens in the following steps:
+        // Convert Data to JSON
+        // Implementation of code
+        // Data retrieval
+
+    // NOTE: Although utilizing the local storage is convinient, it's not secure for sensitive info.
+    // Due to this it is only safe for storing details like:
+        // User preferences => Dark mode, Language
+        // Non-sensitive profile info => Username
+        // UI State => Sidebar collapsed/expanded
