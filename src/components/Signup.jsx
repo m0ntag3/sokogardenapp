@@ -47,6 +47,9 @@ const Signup = () => {
             setEmail("");
             setPassword("");
             setNumber("");
+            setTimeout(() => {
+    setSuccess("");
+}, 5000);
         }
         catch(error){
             // set the loading book back to default
@@ -77,7 +80,7 @@ return (
             onChange={(e) => setUsername(e.target.value)}
             required /> <br />
 
-            {/* {username} */}
+            {/* <p className='text-light'>{username} <br /></p> */}
 
             <input type="email"
             placeholder='Enter the email address'
@@ -86,7 +89,7 @@ return (
             onChange={(e) => setEmail(e.target.value)}
             required/> <br />
 
-            {/* {email} */}
+            {/* <p className='text-light'>{email} <br /></p> */}
             
             <input type="password"
             placeholder='Enter the password'
@@ -95,7 +98,7 @@ return (
             onChange={(e) => setPassword(e.target.value)}
             required /> <br />
 
-            {/* {password} */}
+            {/*<p className='text-light'>{password} <br /></p>*/}
 
             <input type="number"
             placeholder='Enter the mobilephone number'
@@ -104,7 +107,7 @@ return (
             onChange={(e) => setNumber(e.target.value)}
             required/> <br />
 
-            {/* {number} <br /> */}
+            {/* <p className='text-light'>{number} <br /></p> */}
 
             <input type="submit" value="Signup" className="btn btn-outline-danger" /> <br /> <br />
 
