@@ -33,7 +33,7 @@ const Signin = () => {
             data.append("password",password);
 
             // Interact with axios for the response
-            const response = await axios.post("https://kbenkamotho.alwaysdata.net/api/signin",data);
+            const response = await axios.post("https://collinspaul.alwaysdata.net/api/signin",data);
 
             // Set the loading hook back to default.
             setLoading("");
@@ -42,22 +42,25 @@ const Signin = () => {
             if (response.data.user){
                 // If user is there ,definately the details entered during signin are correct.
                 // setSuccess("Login Successful. Welcome!");
-
+            
+            // Store user details in local storage
+                localStorage.setItem("user", JSON.stringify(response.data.user));
+                
                 // If it is successful let the person get redirected to another page.
                 navigate("/");
             }
             else{
-                // The user is not found therefore the credentials entered on form were incorrect.
+            // The user is not found therefore the credentials entered on form were incorrect.
                 setError("Login failed. Please try again!");
                 
             }
         }
         catch(error){
-            // setloadin back to default
+            // setloading back to default
             setLoading("");
 
             // Update the error hook with a message
-            setError("Damn we have a problem. Try again!");
+            setError("We have a problem. Try again!");
         }
     }
 
@@ -93,9 +96,9 @@ return (
 
                 {/* <p className='text-light'>{password} <br /></p> */}
 
-                <input type="submit" value="Signin" className='btn btn-outline-danger' />
+                <input type="submit" value="Signin" className='btn btn-outline-danger' /> <br /> <br />
 
-            <p className='lest'>Create an account if one is not at disposal<Link to={'/signup'} className='link'>Sign Up</Link></p>
+            <p className='lest'>Create an account if one is not at disposal <br /><Link to={'/signup'} className='link'>Register</Link></p>
             </form>
         </div>
         
