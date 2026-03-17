@@ -49,6 +49,9 @@ const Addproducts = () => {
             setProductCost("");
             setProductPhoto("");
 
+            // Clearing(Defaulting/resetting) the input values
+            e.target.reset()
+
             setTimeout(() => {
             setSuccess("");
             }, 4000);
