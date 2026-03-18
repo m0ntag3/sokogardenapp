@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Loader from './Loader';
+import { useNavigate } from 'react-router-dom';
 
 const Getproducts = () => {
 
@@ -10,8 +11,12 @@ const Getproducts = () => {
     const [loading,setLoading] = useState(false);
     const [error,setError] = useState("");
 
+    // Declare the navigate hook
+    const navigate = useNavigate();
+
     // Below we specify the image base url
     const img_url= "https://collinspaul.alwaysdata.net/static/images/"
+    
     // Create a function to help fetch the products from the API
     const fetchProducts = async () =>{
         try{
@@ -59,10 +64,14 @@ return (
                 alt="product name"
                 className='pic' />
 
-                <div className="card-body">
+                <div className="card-body body">
                     <h5 className='text-secondary'>{product.product_name}</h5>
-                    <p className="text-dark">{product.product_description.slice(0,70)}...</p>
-                    <h4 className="text-info">Kes {product.product_cost}</h4>
+
+                    <p className="text-dark">{product.product_description.slice(0,70)}...</p> 
+
+                    <b className="text-info">Kes {product.product_cost}</b> <br />
+
+                    <button className="btn btn-outline-danger" onClick = {() => navigate("/makepayment",{state : {product}})}>Purchase Now</button>
                 </div>
             </div>
         </div>
