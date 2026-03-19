@@ -15,13 +15,14 @@ function App() {
       <header className="App-header">
         <h1>Welcome to Sokogarden</h1>
       </header>
+      
       <nav>
         <Link to="/" className='btn btn-primary btn-sm m-1'>Home</Link>
         <Link to="/signup" className='btn btn-warning btm-sm m-1'>Register</Link>
         <Link to="/signin" className='btn btn-secondary btm-sm m-1'>Log In</Link>
         <Link to="/addproducts" className='btn btn-info btn-sm m-1'>Add Products</Link>
-
       </nav>
+
       {/* Below are the different routes together with the different components */}
       <Routes>
         <Route path='/' element={<Getproducts/>}/>

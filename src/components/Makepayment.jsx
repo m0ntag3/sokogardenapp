@@ -7,7 +7,7 @@ const Makepayment = () => {
 
     // Destructure the product details passed from the Getproducts component
     // UseLocation hook allows us to get/destructure the props passed from the previuos component
-    const {product} = useLocation().state || {}
+    const {product} = useLocation().state || {} 
 
     // Declare the navigate hook
     const navigate = useNavigate();
@@ -63,7 +63,7 @@ return (
 
         <div className="col-md-1 mt-3">
             <input type="button"
-            className="btn btn-outline-primary"
+            className="btn btn-danger"
             value="Back"
             onClick={() => navigate("/")} />
         </div>
@@ -83,8 +83,8 @@ return (
                 <form onSubmit={handlesubmit}>
                 {loading && <Loader />}
 
-                    <h3 className="text-success">{success}</h3>
-                    <h4 className='text-danger'>{error}</h4>
+                    <h3 className="text-dark">{success}</h3>
+                    <h4 className="text-danger">{error}</h4>
 
 
                     <input type="number"

@@ -57,7 +57,7 @@ return (
         {/* Map the products fetched from the API to the user interface */}
 
         {products.map((product) => (
-                    <div className="col-md-3 justify-content-center mb-3">
+        <div className="col-md-3 justify-content-center mb-3">
             <div className="card shadow">
                 <img 
                 src={img_url + product.product_photo} 
